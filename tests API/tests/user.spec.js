@@ -154,14 +154,15 @@ describe('User data api', async () => {
 
     expect(compareObjects(expectedResponse[0], userCreationBodyObject[0])).to
       .true;
+  });
 
+  it('This test should fail, explanation in the code', async () => {
     // At this point there should be input validation, as I can pass anything in payload.
     // With incorrect values it should return 404 or any other status code that indicates incorrect data
-    // Current solution might end with code injections
     const wrongPayload = {
       anything: 'anything',
       function: (async () => {
-        console.log('Explanation why test fails in the code');
+        // Without proper validation here could be a some type of injection used
       })(),
     };
 
