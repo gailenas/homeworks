@@ -169,4 +169,16 @@ describe('User data api', async () => {
     req = await user.createSpecificUserItem(wrongPayload);
     expect(req.status).to.equal(404);
   });
+
+  // About the task:
+  // After an item is created (POST /user/item), GET /user/items endpoint returns a new item
+  // only after approximately 10 seconds. How would you tackle this in api tests? Provide
+  // solution.
+
+  // Unfortunatelly api returns the same results all the time abd I was not able to find any items I have added
+  // but as I received 201 I believe that it was added :)
+  // If I'll be able to find an item I added, solution for wait will be simple:
+  // Create a function with timeout, that contains do while and inside it there will be a check,
+  // That check send request to get user/item with specific ID, once it will be available, function returns TRUE,
+  // otherwise function break after set amount of time with failure
 });
